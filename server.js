@@ -1,18 +1,43 @@
 const express = require("express");
+var cors = require("cors");
 const axios = require("axios");
 const app = express();
 const fs = require("fs");
 
 app.set("view engine", "ejs");
+app.use(cors());
 
 app.get("/", (req, res) => {
-  let jso = {};
-  jso = JSON.parse(fs.readFileSync("jso.json", "utf8"));
-  const rand1 = Math.floor(Math.random() * Object.keys(jso).length);
-  const x = Object.keys(jso)[rand1];
+  res.sendFile(__dirname + "/views/index.html");
+});
 
-  const rand2 = Math.floor(Math.random() * Object.keys(jso[x][0]).length + 1);
-  const y = Object.values(jso[x][0])[rand2];
+app.get("/app.js", (req, res) => {
+  res.sendFile(__dirname + "/views/app.js");
+});
+
+app.get("/style.css", (req, res) => {
+  res.sendFile(__dirname + "/views/style.css");
+});
+
+app.get("/categories.json", (req, res) => {
+  res.sendFile(__dirname + "/bigCategories.json");
+});
+
+app.get('/category/:id', (req, res) => {
+  const id = req.params.id;
+
+  let jso = {};
+  jso = JSON.parse(fs.readFileSync("allCategories.json", "utf8"));
+  const x = Object.keys(jso)[id];
+  let rand2 = 0
+  let y = ""
+  try {
+    rand2 = Math.floor(Math.random() * Object.keys(jso[x][0]).length + 1);
+    y = Object.values(jso[x][0])[rand2];
+  } catch (error) {
+    res.status(404).json({})
+    return
+  }
   axios
     .get(
       `https://public.trendyol.com/discovery-web-searchgw-service/v2/api/infinite-scroll/c${y}?pi=${Math.floor(
@@ -24,22 +49,20 @@ app.get("/", (req, res) => {
       if (jso.result.products.length > 0) {
         const rand1 = Math.floor(Math.random() * jso.result.products.length);
         const prod = jso.result.products[rand1];
-        res.render("index", {
+        res.json({
           name: prod.imageAlt,
           price: prod.price.discountedPrice,
           url: `https://trendyol.com${prod.url}`,
           img: `https://cdn.dsmcdn.com/${prod.images[0]}`,
         });
+        return
       } else {
-        res.render("refresh");
+        res.status(404).json({})
+        return
       }
     })
-    .catch((error) => console.error(error));
-});
-
-app.get('/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`tag id is ${id}`);
+    .catch((error) => res.status(404).json({}));
+    
 });
 
 app.listen(3000);
