@@ -29,30 +29,27 @@ app.get("/category/:id", (req, res) => {
   // randomizers
   if (id < 0) id = Math.floor(Math.random() * Object.keys(jso).length);
   const x = Object.keys(jso)[id];
-  let rand2 = Math.floor(Math.random() * Object.keys(jso[x][0]).length + 1);
-  let y = Object.values(jso[x][0])[rand2];
+  let rand2 = Math.floor(Math.random() * Object.keys(jso[x][0]).length);
+  let category = Object.values(jso[x][0])[rand2];
   let rand = Math.floor(Math.random() * 208) + 1; // 208 inclusive 0 non-inclusive
-
+  let url = setUrl(category, rand);
   axios
-    .get(
-      `https://public.trendyol.com/discovery-web-searchgw-service/v2/api/infinite-scroll/c${y}?pi=${rand}`
-    )
+    .get(url)
     .then((response) => {
+      console.log(url);
       const jso1 = JSON.parse(JSON.stringify(response.data));
       console.log(`First Length: ${jso1.result.products.length}`);
 
       if (jso1.result.products.length === 0) {
         const maxPage = Math.ceil(jso1.result.totalCount / 24); // we divide the total product count to products per page and get a random number under that number
         rand = Math.floor(Math.random() * maxPage) + 1;
-        axios
-          .get(
-            `https://public.trendyol.com/discovery-web-searchgw-service/v2/api/infinite-scroll/c${y}?pi=${rand}`
-          )
-          .then((response2) => {
-            const jso2 = JSON.parse(JSON.stringify(response2.data));
-            console.log(`Second Length: ${jso2.result.products.length}`);
-            respondToCall(jso2, res);
-          });
+        let url2 = setUrl(category, rand);
+        axios.get(url2).then((response2) => {
+          const jso2 = JSON.parse(JSON.stringify(response2.data));
+          console.log(`Second Length: ${jso2.result.products.length}`);
+
+          respondToCall(jso2, res);
+        });
       } else {
         respondToCall(jso1, res);
       }
@@ -61,15 +58,29 @@ app.get("/category/:id", (req, res) => {
     .catch((error) => res.status(404).json({}));
 });
 
+function setUrl(url, rand) {
+  if (url.substring(0, 4) != "/sr/")
+    return `https://public.trendyol.com/discovery-web-searchgw-service/v2/api/infinite-scroll/c${url}?pi=${rand}`;
+  return `https://public.trendyol.com/discovery-web-searchgw-service/v2/api/infinite-scroll${url}&pi=${rand}`;
+}
+
 function respondToCall(jso, res) {
   const rand1 = Math.floor(Math.random() * jso.result.products.length);
   const prod = jso.result.products[rand1];
   console.log(`URL: ${prod.url}`);
+  let rating = prod.hasOwnProperty("ratingScore")
+    ? prod.ratingScore.averageRating
+    : -1;
+  let ratingCount = prod.hasOwnProperty("ratingScore")
+    ? prod.ratingScore.totalCount
+    : -1;
   let response = {
     name: prod.imageAlt,
     price: prod.price.discountedPrice,
     url: `https://trendyol.com${prod.url}`,
-    img: `https://cdn.dsmcdn.com/${prod.images[0]}`,
+    img: `https://cdn.dsmcdn.com${prod.images[0]}`,
+    rating: rating,
+    ratingCount: ratingCount,
   };
   try {
     res.status(200).json(response);

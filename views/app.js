@@ -1,4 +1,5 @@
-const url = "https://trendyolrastgele.social/"
+const url1 = "https://trendyolrastgele.social/"
+const url = "http://127.0.0.1:3000/"
 
 const app = Vue.createApp({
     data() {
@@ -7,7 +8,9 @@ const app = Vue.createApp({
         price: '0.00',
         linkToItem: '#',
         picture: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png',  // not the best default
-        items: ["1","2"],
+        items: [],
+        rating: '1',
+        ratingCount: '',
         selectedIndex: 0
       }
     },
@@ -22,9 +25,12 @@ const app = Vue.createApp({
         this.price = results.price.toFixed(2)
         this.linkToItem = results.url
         this.picture = results.img
+        this.rating = results.rating === -1 ? "" : results.rating.toFixed(1) + "/5.0"
+        this.ratingCount = results.ratingCount === -1 ? "0" : results.ratingCount
+        this.ratingCount += " ratings"
       },
       switchView(event, selectedIndex) {
-        console.log(event, selectedIndex);      
+        console.log(event, selectedIndex);
         this.selectedIndex = selectedIndex;
       },
       setImgBlank() {
