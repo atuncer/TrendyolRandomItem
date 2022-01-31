@@ -38,11 +38,19 @@
   button {
     cursor: pointer;
     display: inline-block;
-    background: #215999;
+    background: #000000;
     color: white;
     font-size: 18px;
-    border: 0;
+    border: 2;
     padding: 1rem 1.5rem;
+  }
+  
+  .random{
+    background: #215999;
+  }
+
+  .item{
+    background: #c57d11;
   }
   
   button:focus {
