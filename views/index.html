@@ -10,18 +10,21 @@
 </head>
 <body>
   <div id="app">
+    <label>Kategori Seç:</label>
     <select @change="switchView($event, $event.target.selectedIndex)">
       <option v-for="(item, index) in items" :value="item.title">
         {{ item }}
       </option>
     </select>
       <img
-        v-bind:src="picture"
-        :alt="`${firstName} ${lastName}`"
+        :src="picture"
+        :alt="`${itemName}`"
+        @error="setImgBlank"
       />
-      <h1>{{firstName}} {{lastName}}</h1>
-      <a :href="`${email}`">Ürüne git</a>
-      <button :class="gender" @click="getUser()">Get Random User</button>
+      <h1>{{itemName}}</h1>
+      <h3>{{price}}&nbsp;₺</h3>
+      <a :href="`${linkToItem}`">Ürüne git</a>
+      <button @click="getUser()">Rastgele Ürün Bul</button>
     </div>
   <script src="/app.js"></script>
 </body>

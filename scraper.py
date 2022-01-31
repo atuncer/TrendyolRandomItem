@@ -10,23 +10,25 @@ def getSite(url):
 
 def getLinks(html):
     dic = {}
-
     soup = BeautifulSoup(html, "html.parser")
+
     for tablink in soup.find_all("li", {"class": "tab-link"}):
         dic[tablink.find("a").text] = [{}]
         for ul in tablink.find_all("ul"):
             for li in ul.find_all("li"):
                 dic[tablink.find("a").text][0][li.find("a").text] = li.find("a")["href"]
 
-    json_object = json.dumps(dic, indent=2, ensure_ascii=False)
+    return dic
 
+def writeJson(jso):
+    json_object = json.dumps(jso, indent=2, ensure_ascii=False)
 
     with open("allCategories.json", "w", encoding="utf-8") as outfile:
         outfile.write(json_object)
 
     with open("bigCategories.json", "w", encoding="utf-8") as outfile:
         text = "["
-        for key in dic:
+        for key in jso:
             text += "\n\t\"" + key + "\","
         text = text[:-1] + "\n]"
         outfile.write(text)
@@ -35,4 +37,5 @@ def getLinks(html):
 if __name__ == "__main__":
     URL = "https://trendyol.com/"
     html = getSite(URL).text
-    getLinks(html)
+    jso = getLinks(html)
+    writeJson(jso)
