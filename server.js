@@ -41,7 +41,8 @@ app.get("/category/:id", (req, res) => {
       console.log(`First Length: ${jso1.result.products.length}`);
 
       if (jso1.result.products.length === 0) {
-        const maxPage = Math.ceil(jso1.result.totalCount / 24); // we divide the total product count to products per page and get a random number under that number
+        const productsPerPage = 24;
+        const maxPage = Math.ceil(jso1.result.totalCount / productsPerPage);
         rand = Math.floor(Math.random() * maxPage) + 1;
         let url2 = setUrl(category, rand);
         axios.get(url2).then((response2) => {

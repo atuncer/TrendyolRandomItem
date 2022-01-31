@@ -1,5 +1,5 @@
-const url1 = "https://trendyolrastgele.social/"
-const url = "http://127.0.0.1:3000/"
+const url = "https://trendyolrastgele.social/"
+const url1 = "http://127.0.0.1:3000/"
 
 const app = Vue.createApp({
     data() {
