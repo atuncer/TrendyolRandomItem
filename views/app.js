@@ -13,7 +13,8 @@ const app = Vue.createApp({
     },
     methods: {
       async getUser() {
-        const res = await fetch(`${url}category${this.selectedIndex}`);
+        const res = await fetch(`${url}category/${this.selectedIndex}`);
+        console.log(res);
         const results = await res.json()
         if (!res.ok) return;
         
@@ -31,7 +32,7 @@ const app = Vue.createApp({
       }
     },
     async beforeMount() {
-      const res = await fetch(`${url}/categories.json`);
+      const res = await fetch(`${url}categories.json`);
       const results = await res.json()
       this.items = results
       this.items.unshift('Rastgele')
