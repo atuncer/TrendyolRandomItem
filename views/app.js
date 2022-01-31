@@ -1,3 +1,5 @@
+const url = "https://trendyolrastgele.social/"
+
 const app = Vue.createApp({
     data() {
       return {
@@ -5,13 +7,13 @@ const app = Vue.createApp({
         price: '0.00',
         linkToItem: '#',
         picture: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png',  // not the best default
-        items: [],
+        items: ["1","2"],
         selectedIndex: 0
       }
     },
     methods: {
       async getUser() {
-        const res = await fetch(`http://127.0.0.1:3000/category/${this.selectedIndex}`);
+        const res = await fetch(`${url}category${this.selectedIndex}`);
         const results = await res.json()
         if (!res.ok) return;
         
@@ -29,7 +31,7 @@ const app = Vue.createApp({
       }
     },
     async beforeMount() {
-      const res = await fetch(`http://127.0.0.1:3000/categories.json`);
+      const res = await fetch(`${url}/categories.json`);
       const results = await res.json()
       this.items = results
       this.items.unshift('Rastgele')
