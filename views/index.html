@@ -19,15 +19,13 @@
       <img
         :src="picture"
         :alt="`${itemName}`"
+        :href="`${itemLink}`"
         @error="setImgBlank"
       />
-      <h1>{{itemName}}</h1>
-      <h3>{{price}}&nbsp;₺</h3>
+      <a :href="`${linkToItem}`" target="_blank" rel="noopener noreferrer">{{itemName}}<a>
+      <h3>{{price}}</h3>
       <h3><strong>{{rating}}</strong> {{ratingCount}}</h3>
-      <form :action="`${linkToItem}`" target="_blank" rel="noopener noreferrer">
-         <button class="item" type="submit">Ürüne Git</button>
-      </form>
-      <button class="random" @click="getUser()">Rastgele Ürün Bul</button>
+      <button class="random" @click="getRandom()">Rastgele Ürün Bul</button>
     </div>
   <script src="/app.js"></script>
 </body>

@@ -5,24 +5,24 @@ const app = Vue.createApp({
     data() {
       return {
         itemName: '',
-        price: '0.00',
+        price: '',
         linkToItem: '#',
         picture: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png',  // not the best default
         items: [],
-        rating: '1',
+        rating: '',
         ratingCount: '',
         selectedIndex: 0
       }
     },
     methods: {
-      async getUser() {
+      async getRandom() {
         const res = await fetch(`${url}category/${this.selectedIndex}`);
         console.log(res);
         const results = await res.json()
         if (!res.ok) return;
         
         this.itemName = results.name
-        this.price = results.price.toFixed(2)
+        this.price = results.price.toFixed(2) + "₺"
         this.linkToItem = results.url
         this.picture = results.img
         this.rating = results.rating === -1 ? "" : results.rating.toFixed(1) + "/5.0"
