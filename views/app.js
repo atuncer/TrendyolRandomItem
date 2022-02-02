@@ -27,7 +27,7 @@ const app = Vue.createApp({
         this.picture = results.img
         this.rating = results.rating === -1 ? "" : results.rating.toFixed(1) + "/5.0"
         this.ratingCount = results.ratingCount === -1 ? "0" : results.ratingCount
-        this.ratingCount += " ratings"
+        this.ratingCount += " değerlendirme"
       },
       switchView(event, selectedIndex) {
         console.log(event, selectedIndex);
