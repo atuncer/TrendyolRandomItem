@@ -11,7 +11,7 @@
   
   #app {
     width: 400px;
-    height: 100vh;
+    height: 85vh;
     margin: auto;
     text-align: center;
     display: flex;
@@ -21,8 +21,13 @@
   }
 
   .header {
+    height: 7vh;
     text-align: center;
     background: #215999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .select{
@@ -44,13 +49,13 @@
     height: 300px;
     width: 300px;
     object-fit: contain;
-    border: 0.3px #ccc solid;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     margin-bottom: 1rem;
   }
 
   img.logo {
-    height: 70px;
-
+    height: 1%;
   }
   
   .btn-outline-info:hover{
@@ -62,7 +67,11 @@
     border-color: #215999 !important;
 }
 
-.btn-outline-dark{
-  position: absolute;
-  bottom: 0;
+footer{
+    height: 8vh;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

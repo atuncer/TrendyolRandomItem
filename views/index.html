@@ -12,15 +12,17 @@
 </head>
 <body>
   <div class="header">
-    <img class="logo" src="logo.png" alt="Logo">
+    <img class="mh-100 p-2" src="logo.png" alt="Logo">
   </div>
   <div id="app">
+    
     <label>Kategori Seç:</label>
     <select class="select" @change="switchView($event, $event.target.selectedIndex)">
       <option v-for="(item, index) in items" :value="item.title">
         {{ item }}
       </option>
     </select>
+    <a :href="`${itemLink}`">
     <img
       class="product"
       :src="picture"
@@ -28,16 +30,20 @@
       :href="`${itemLink}`"
       @error="setImgBlank"
     />
+  </a>
     <a :href="`${itemLink}`" target="_blank" rel="noopener noreferrer">{{itemName}}<a>
     <h3>{{price}}</h3>
     <h3><strong>{{rating}}</strong> {{ratingCount}}</h3>
     <button class="shadow-none btn btn-outline-info" @click="getRandom()" type="submit">Rastgele Ürün Bul</button>
-    <a href="https://github.com/atuncer/TrendyolRandomItem" class="shadow-none btn btn-outline-dark mt-1">
-      <i class="fab fa-github"></i>
-      View on GitHub
-    </a>
+
     
   </div>
+<footer>
+  <a href="https://github.com/atuncer/TrendyolRandomItem" class="shadow-none btn btn-outline-dark mt-1 pl-2">
+    <i class="fab fa-github"></i>
+    View on GitHub
+  </a>
+</footer>
   
   <script src="/app.js"></script>
   
