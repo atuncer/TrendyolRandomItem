@@ -6,7 +6,7 @@ const app = Vue.createApp({
       return {
         itemName: '',
         price: '',
-        linkToItem: '#',
+        itemLink: '#',
         picture: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png',  // not the best default
         items: [],
         rating: '',
@@ -23,7 +23,7 @@ const app = Vue.createApp({
         
         this.itemName = results.name
         this.price = results.price.toFixed(2) + "₺"
-        this.linkToItem = results.url
+        this.itemLink = results.url
         this.picture = results.img
         this.rating = results.rating === -1 ? "" : results.rating.toFixed(1) + "/5.0"
         this.ratingCount = results.ratingCount === -1 ? "0" : results.ratingCount

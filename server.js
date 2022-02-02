@@ -23,6 +23,10 @@ app.get("/categories.json", (req, res) => {
   res.sendFile(__dirname + "/bigCategories.json");
 });
 
+app.get("/logo.png", (req, res) => {
+  res.sendFile(__dirname + "/images/logo.png");
+});
+
 app.get("/category/:id", (req, res) => {
   let id = req.params.id - 1;
   let jso = JSON.parse(fs.readFileSync("allCategories.json", "utf8"));
