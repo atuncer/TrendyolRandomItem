@@ -46,20 +46,29 @@ h3 {
 }
 
 div.product {
+  height: 300px;
+  width: 300px;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 1rem;
   transition: 0.5s ease;
   backface-visibility: hidden;
 }
+
 div.product:hover {
   transform: scale(1.02);
   opacity: 0.7;
 }
 
+.itemName {
+  font-size: 0.8rem;
+  margin: 0.5rem;
+  overflow: hidden;
+}
+
 img.product {
-  height: 300px;
-  width: 300px;
+  height: 50%;
+  width: 100%;
   object-fit: contain;
 }
 
