@@ -68,7 +68,7 @@ Your contributions are always welcome and appreciated. Following are the things 
  If you think you have encountered a bug, and I should know about it, feel free to report it [here](https://github.com/atuncer/TrendyolRandomItem/issues/new) and I will take care of it.
 
  2. **Request a feature** <br>
- You can also request for a feature [here](https://github.com/atuncer/TrendyolRandomItem/issues/new), and if it will viable, it will be picked for development.  
+ You can also request for a feature [here](https://github.com/atuncer/TrendyolRandomItem/issues/new), and if it is viable, it will be picked for development.  
 
  3. **Create a pull request** <br>
  It can't get better then this, your pull request will be appreciated. You can get started by picking up any open issues from [here](https://github.com/atuncer/TrendyolRandomItem/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) and make a pull request.
