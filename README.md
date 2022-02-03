@@ -1,7 +1,9 @@
 # Trendyol Random Item
-![Trendyol Rastgele](./images/logo.png)
+[![Trendyol Rastgele](./images/logo.png)](https://trendyolrastgele.social/)
 
-A webapp that finds random items from [Trendyol](https://trendyol.com)
+A webapp that finds random items from Trendyol.
+
+[Check the website](https://trendyolrastgele.social/)
 
 ## :ledger: Index
 
