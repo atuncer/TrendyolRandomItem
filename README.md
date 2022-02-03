@@ -35,6 +35,8 @@ $ npm install
 ```
 $ npm run devStart
 ```
+   and open http://127.0.0.1:3000 on your browser.
+
 - To run the scraper and scrape the latest categories from Trendyol.
 ```
 $ python(3) scraper.py 
@@ -52,7 +54,10 @@ Clone, install, and run.
 
 
 ### :rocket: Deployment
-I am hosting the [website](https://trendyolrastgele.social) on DigitalOcean Ubuntu droplet. I preferred DigitalOcean because they offer free $100 credit for students. This project does not require CI/CD or any complicated deployment strategies. I push to the repo from my development environment and pull the repo from production server.
+I am hosting the [website](https://trendyolrastgele.social) on DigitalOcean Ubuntu droplet. I preferred DigitalOcean because they offer free $100 credit for students.
+
+This project does not require CI/CD or any complicated deployment strategies. I push to the repo from my development environment and pull the repo from production server.
+
 Cron job runs the scraper daily. So the REST API can cover 100% of the items even if a new category is created.
 
 
