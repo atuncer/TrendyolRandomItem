@@ -35,6 +35,12 @@ app.get("/blank.png", (req, res) => {
     .sendFile(path.resolve(__dirname + "/../public/images/blank.png"));
 });
 
+app.get("/favicon.ico", (req, res) => {
+  res
+    .status(200)
+    .sendFile(path.resolve(__dirname + "/../public/images/favicon.ico"));
+});
+
 app.get("/category/:id", (req, res) => {
   let id = req.params.id - 1;
   let jso = JSON.parse(
