@@ -8,23 +8,27 @@ var path = require("path");
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve("public/index.html"));
+  res.status(200).sendFile(path.resolve("public/index.html"));
 });
 
 app.get("/app.js", (req, res) => {
-  res.sendFile(path.resolve("public/app.js"));
+  res.status(200).sendFile(path.resolve("public/app.js"));
 });
 
 app.get("/style.css", (req, res) => {
-  res.sendFile(path.resolve("public/style.css"));
+  res.status(200).sendFile(path.resolve("public/style.css"));
 });
 
 app.get("/categories.json", (req, res) => {
-  res.sendFile(__dirname + "/bigCategories.json");
+  res.status(200).sendFile(__dirname + "/bigCategories.json");
 });
 
 app.get("/logo.png", (req, res) => {
-  res.sendFile(path.resolve("public/images/logo.png"));
+  res.status(200).sendFile(path.resolve("public/images/logo.png"));
+});
+
+app.get("/blank.png", (req, res) => {
+  res.status(200).sendFile(path.resolve("public/images/blank.png"));
 });
 
 app.get("/category/:id", (req, res) => {

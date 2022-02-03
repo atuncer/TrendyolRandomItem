@@ -7,7 +7,7 @@ const app = Vue.createApp({
       itemName: "",
       price: "",
       itemLink: "#",
-      picture: "https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png", // not the best default
+      picture: "blank.png", // not the best default
       items: [],
       rating: "",
       ratingCount: "",
