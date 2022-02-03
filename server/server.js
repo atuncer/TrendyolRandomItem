@@ -37,7 +37,9 @@ app.get("/blank.png", (req, res) => {
 
 app.get("/category/:id", (req, res) => {
   let id = req.params.id - 1;
-  let jso = JSON.parse(fs.readFileSync("server/allCategories.json", "utf8"));
+  let jso = JSON.parse(
+    fs.readFileSync(__dirname + "allCategories.json", "utf8")
+  );
   // randomizers
   if (id < 0) id = Math.floor(Math.random() * Object.keys(jso).length);
   const x = Object.keys(jso)[id];
