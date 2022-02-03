@@ -35,8 +35,7 @@ const app = Vue.createApp({
       this.selectedIndex = selectedIndex;
     },
     setImgBlank() {
-      this.picture =
-        "https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png";
+      this.picture = "blank.png";
     },
   },
   async beforeMount() {
