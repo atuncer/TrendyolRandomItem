@@ -1,5 +1,5 @@
 # Trendyol Random Item
-[![Trendyol Rastgele](./images/logo.png)](https://trendyolrastgele.social/)
+[![Trendyol Rastgele](./public/images/logo.png)](https://trendyolrastgele.social/)
 
 A webapp that finds random items from Trendyol.
 
