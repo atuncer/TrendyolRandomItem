@@ -45,7 +45,6 @@ $ python(3) scraper.py
 ##  :wrench: Development
 
 ### :notebook: Pre-Requisites
-List all the pre-requisites the system needs to develop this project.
 - Node.js
 - Python 3
 
