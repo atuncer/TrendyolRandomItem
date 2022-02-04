@@ -27,13 +27,13 @@
       </option>
     </select>
     <div class="product">
-      <a :href="`${itemLink}`">
+      <a class="imgHolder" :href="`${itemLink}`">
         <img class="product" :src="picture" :alt="`${itemName}`" :href="`${itemLink}`" @error="setImgBlank" />
       </a>
       <a class="itemName" :href="`${itemLink}`" target="_blank" rel="noopener noreferrer">{{itemName}}<a></br>
-          <p class="float-start pt-2 px-2">{{price}}</p>
+          <p class="productText">{{price}}</p>
           <div style="clear: both; size: 0px;"></div>
-          <p class="float-start px-2"><strong style="color: #ca7c1b">{{rating}}</strong> <small
+          <p class="productText"><strong style="color: #ca7c1b">{{rating}}</strong> <small
               class="text-muted">{{ratingCount}}</small></p>
     </div>
     <button class="shadow-none btn btn-outline-info" @click="getRandom()" type="submit">Rastgele Ürün Bul</button>
