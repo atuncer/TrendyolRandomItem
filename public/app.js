@@ -7,7 +7,7 @@ const app = Vue.createApp({
       itemName: "",
       price: "",
       itemLink: "#",
-      picture: "blank.png", // not the best default
+      picture: "blank.png",
       items: [],
       rating: "",
       ratingCount: "",
@@ -43,6 +43,7 @@ const app = Vue.createApp({
     const results = await res.json();
     this.items = results;
     this.items.unshift("Rastgele");
+    this.getRandom();
   },
 });
 
