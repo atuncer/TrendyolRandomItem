@@ -1,4 +1,4 @@
-const url = "https://trendyolrastgele.social/";
+const url = "https://trendyol-rastgele.herokuapp.com/";
 const url1 = "http://127.0.0.1:3000/";
 
 const app = Vue.createApp({
