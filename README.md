@@ -1,9 +1,9 @@
 # Trendyol Random Item
-[![Trendyol Rastgele](./public/images/logo.png)](https://trendyolrastgele.social/)
+[![Trendyol Rastgele](./public/images/logo.png)](https://trendyol-rastgele.herokuapp.com/)
 
 A webapp that finds random items from Trendyol.
 
-[Check the website](https://trendyolrastgele.social/)
+[Check the website](https://trendyol-rastgele.herokuapp.com/)
 
 ## :ledger: Index
 
@@ -19,7 +19,7 @@ A webapp that finds random items from Trendyol.
 - [Contribution](#fire-contribution)
 
 ##  :beginner: About
-A Node.js project that built with Express js. The Express js server has RESTful APIs that returns a random item according to the selected category e.g. [Women Category](https://trendyolrastgele.social/category/1). Frontend is built with Vue.js.
+A Node.js project that built with Express js. The Express js server has RESTful APIs that returns a random item according to the selected category e.g. [Women Category](https://trendyol-rastgele.herokuapp.com/category/1). Frontend is built with Vue.js.
 
 ## :zap: How it Works
 Python web scraper scrapes all the existing sub-categories and their corresponding API urls. Express js server selects a random sub-category for the selected category, calls the public API of Trendyol, and returns a random item.
@@ -53,11 +53,11 @@ Clone, install, and run.
 
 
 ### :rocket: Deployment
-I am hosting the [website](https://trendyolrastgele.social) on DigitalOcean Ubuntu droplet. I preferred DigitalOcean because they offer free $100 credit for students.
+I am hosting the [website](https://trendyol-rastgele.herokuapp.com/) on Heroku. I preferred DigitalOcean before because they offer free $100 credit for students. However my free trial has ended so I deployed it to Heroku.
 
-This project does not require CI/CD or any complicated deployment strategies. I push to the repo from my development environment and pull the repo from production server.
+This project does not require CI/CD or any complicated deployment strategies. I push to the repo from my development environment and deply it manually on Heroku's website.
 
-Cron job runs the scraper daily. So the REST API can cover 100% of the items even if a new category is created.
+Cron job used to run the scraper daily on the DigitalOcean server, So the REST API can cover 100% of the items even if a new category is created. However I cannot run it on Heroku.
 
 
 ##  :fire: Contribution
